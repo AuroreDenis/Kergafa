@@ -1,0 +1,64 @@
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  'real-node',
+  ]
+%}
+
+{{ attach_library('kergafa_theme/swiper') }}
+
+<div class='all-pages-contenu'>
+    {{ attach_library('classy/node') }}
+	
+    <article {{ attributes.addClass(classes) }}>
+
+        <div {{ content_attributes.addClass('node__content') }}>
+   
+            <h1> Réalisation {{espace_maison}} : {{intitule_real}}</h1>
+
+           
+
+            <!-- Swiper -->
+            <div class="swiperReal">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        {% for img in image_details %}
+                            <div class="swiper-slide" role="group" aria-label="slide-nb-{{ loop.index }}">
+                                <div class="image-legende">
+                                    <img src="{{img['path']}}" alt="{{img['legende']}}">
+                                </div> 
+                            </div> 
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+    		<div class="swiper-button-prev"></div>
+   			<div class="swiper-button-next"></div>
+            <div class="swiperReal2">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        {% for img in image_details %}
+                            <div class="swiper-slide" role="group" aria-label="slide-nb-{{ loop.index }}">
+                                <div class="image-legende">
+                                    <img src="{{img['path']}}" alt="{{img['legende']}}">
+                                </div> 
+                            </div> 
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+                    
+ {% if texte %}
+                <div class="texte">
+                    {{ texte }}
+                </div>
+            {% endif %}
+        </div>
+    </article>
+</div>
+

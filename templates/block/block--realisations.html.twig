@@ -1,0 +1,25 @@
+
+<div class="real-flex">
+	<div class="real-left">
+		<div class="rect-real">
+			<img src="{{ base_path ~ directory }}/images/svg/rect-metiers.svg" /> 
+		</div>
+		<div class="real-txt">
+			<div class="titre-rect"> Réalisations des adhérents </div>
+			
+			<div class="real-contenu">
+				Ker Gafa regroupe des artisans aux savoir-faire variés. Le Groupement d’Achat Français d’Artisans,
+				met à disposition les produits pour les professionnels de nombreux corps de métier.
+			</div>
+		</div>
+	</div>
+	
+	<div class="real-right">
+			<a href="{{ row.node.url_btn }}" class="default-btn secondary-color real-btn">
+				{% if row.node.texte_btn %}{{ row.node.texte_btn }}{% else %}{{ "Toutes les réalisations"|t }}{% endif %}
+			</a>
+	</div>
+</div>
+
+<div class="img-real">
+</div>

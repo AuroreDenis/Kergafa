@@ -1,0 +1,73 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+
+{% if title %}
+    <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+    {%
+    set row_classes = [
+    default_row_class ? 'views-row',
+	'univers-block'
+    ]
+    %}
+
+    <div {{ row.attributes.addClass(row_classes) }}>
+		{% if loop.index %2 == 1%}
+			<div class="impair" id="univers-{{row.node.id}}" >
+				{% if row.node.image_url  %} <img src="{{ row.node.image_url }}" /> {% else %} 	<img src="{{ base_path ~ directory }}/images/univers/img-sol.jpg" /> {% endif %}
+				<div class="metiers-un-univers">
+					<h2>{{ row.node.titre }}	<hr>	</h2>
+					<div class="liste-metiers">
+						<div class="premiere-partie-liste">
+							<ul>
+							{% for metier in row.node.metiers %}
+								<li>{{ metier }}</li>
+								{% if (row.node.metiers|length)>9 and loop.index == ((row.node.metiers|length)/2)|round %}
+									</ul> </div> <div class="deuxieme-partie-liste"> <ul>
+								{% endif%}
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		{% else %}
+			<div class="pair" id="univers-{{row.node.id}}">
+				<div class="metiers-un-univers">
+					<h2>{{ row.node.titre }}	<hr>	</h2>
+					<div class="liste-metiers">
+						<div class="premiere-partie-liste">
+							<ul>
+							{% for metier in row.node.metiers %}
+								<li>{{ metier }}</li>
+								{% if (row.node.metiers|length)>9 and loop.index == ((row.node.metiers|length)/2)|round %}
+									</ul> </div> <div class="deuxieme-partie-liste"> <ul>
+								{% endif%}
+							{% endfor %}
+							</ul>
+						</div>
+					</div>
+				</div>
+				{% if row.node.image_url  %} <img src="{{ row.node.image_url }}" /> {% else %} 	<img src="{{ base_path ~ directory }}/images/univers/img-sol.jpg" /> {% endif %}
+			</div>	
+		{% endif%}
+	
+    </div>
+
+{% endfor %}
+

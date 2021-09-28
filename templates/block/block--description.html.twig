@@ -1,0 +1,59 @@
+
+<div class="description-flex">
+	
+	<div class="description-left">
+		<div class="description-titre">
+			qualité innovation rénovation
+		</div>
+	</div>
+	
+	<div class="description-right">
+		<div class="description-txt">
+			<div class="description-titre">
+				<h2  class="description-titre-1">Un réseau d'artisans conçu dans l'intérêt commun </h2>
+			</div>
+			<div class="description-contenu">
+				L’orientation première tout d’abord est, la qualité du réseau, par le professionnalisme, 
+				l’image reflétée de l’artisan  dans son milieu, par le respect de son engagement au sein d’un groupe, 
+				permettant ainsi lors des réunions locales Ker Gafa, des échanges constructifs : 
+				sur les différents besoins communs du marché : démonstration sur chantier, des formations et informations 
+				sur les réglementations en cours, sur les nouveaux produits du marché, et des orientations d’intérêt 
+				commun que développe Ker Gafa aux services de ses adhérents.	
+			</div>
+		</div>
+		<div class="description-txt">
+			<div class="description-titre">
+				<h2 class="description-titre-2">Négoce de matériaux en ligne pour les artisans </h2>
+			</div>
+			<div class="description-contenu">
+				Notre Groupement d’Achat Français d’Artisans, est un négoce de matériaux en ligne, 
+				mettant à disposition les produits nécessaires aux  professionnels adhérents Ker Gafa 
+				pour la mise en place de leur salle exposition, totalement réservée à leur client potentiel, 
+				et non ouvert au grand public. Les rendez-vous se font essentiellement par contact téléphone, 
+				mail…et autres comme par exemple les prescripteurs professionnels, qui sont les architectes, les maîtres d’œuvres, décorateurs…
+			</div>
+		</div>
+		<div class="description-txt">
+			<div class="description-titre">
+				<h2 class="description-titre-3">Comment adhérer au réseau Ker Gafa en tant qu'artisan ? </h2>	
+			</div>
+			<div class="description-contenu">
+				Pour être adhérent, il faut avant tout être un bon professionnel du bâtiment, 
+				avoir la passion de son métier, être à l’écoute de ses clients, l’accompagner dans ses choix esthétiques, 
+				dans son budget, répondre aux attentes techniques… Ker Gafa accompagne les adhérents à cette exigence.
+			</div>
+		</div>
+	
+		<div class="description-btn">
+			<a href="{{ row.node.url_btn }}" class="default-btn secondary-color description-btn-1">
+				{% if row.node.texte_btn %}{{ row.node.texte_btn }}{% else %}{{ "Nos métiers"|t }}{% endif %}
+			</a>
+			<a href="{{ row.node.url_btn }}" class="default-btn secondary-color description-btn-2">
+				{% if row.node.texte_btn %}{{ row.node.texte_btn }}{% else %}{{ "Notre réseau"|t }}{% endif %}
+			</a>
+			<a href="{{ row.node.url_btn }}" class="default-btn secondary-color description-btn-3">
+				{% if row.node.texte_btn %}{{ row.node.texte_btn }}{% else %}{{ "Devenir adhérent"|t }}{% endif %}
+			</a>
+		</div>
+	</div>
+</div>

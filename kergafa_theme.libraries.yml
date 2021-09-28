@@ -1,0 +1,53 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,600;0,700;0,800;1,100;1,200;1,500;1,600;1,700&display=swap: { type: external }
+      css/style.css: {}
+      css/responsive.css: {}
+      css/print.css: { media: print }
+  js:
+    js/functions.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupalSettings
+
+swiper:
+  version: 3.4.2
+  css:
+    theme:
+      css/swiper.css: {}
+  js:
+    js/swiper.jquery.min.js: {}
+    js/swiper-script.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+
+aos:
+  version: 1.0
+  css:
+    theme:
+      css/aos.css: {}
+  js:
+    js/aos.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+    
+fancybox:
+  version: 3.0
+  css:
+    theme:
+      css/jquery.fancybox.min.css: {}
+  js:
+    js/jquery.fancybox.min.js: {}
+    
+leaflet:
+  version: 1.6.0
+  css:
+    theme:
+      css/leaflet.css: {}
+  js:
+    js/leaflet.js: {}

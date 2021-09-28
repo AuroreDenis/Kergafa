@@ -1,0 +1,74 @@
+/* CSS Document */
+
+
+@media screen and (min-width: 1280px) {
+    header.sticky-desktop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        transform: translateY(-100px);
+		background-color: #fff;
+    }
+
+    header.sticky-desktop.open {
+        transition: all 400ms ease-in-out;
+        transform: translateY(0);
+    }
+
+    body.padding-topped {
+        padding-top: 75px !important;
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    .pos-photo-3,
+    .pos-photo-4 {
+        flex-direction: column-reverse;
+    }
+
+    .pos-photo-3 .para-desc,
+    .pos-photo-4 .para-photos {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .pos-photo-3 .para-photos {
+        width: 100%;
+    }
+
+    .pos-photo-4 .para-desc {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .pos-photo-1 .para-photos,
+    .pos-photo-2 .para-photos {
+        flex-direction: column;
+    }
+
+    .pos-photo-1 .para-photos .para-photo,
+    .pos-photo-2 .para-photos .para-photo {
+        margin: 5px 0;
+        display: flex;
+    }
+
+    .pos-photo-1 .para-photo-img,
+    .pos-photo-2 .para-photo-img {
+        width: 100%;
+    }
+
+    .pos-photo-1 .para-photos .para-photo a,
+    .pos-photo-1 .para-photos .para-photo img,
+    .pos-photo-2 .para-photos .para-photo a,
+    .pos-photo-2 .para-photos .para-photo img {
+        display: inline-block;
+        width: auto;
+        height: auto;
+    }
+
+}

@@ -1,0 +1,13 @@
+{% if title %}
+    <div class="block-titre {{ node_type }}">
+        <div class="title-container">
+		
+			<img src="{{ base_path ~ directory }}/images/svg/rect-metiers.svg" /> 
+            <h1{{ title_attributes.addClass('page-title') }}>{{ title }}</h1>
+
+            {% if intro %}
+                <div class="intro">{{ intro }}</div>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

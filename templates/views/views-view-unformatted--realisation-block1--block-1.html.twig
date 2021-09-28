@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+
+{% for row in rows %}
+		{% if loop.index < 6 %}
+			<div class="une-real">
+				{% if row.node.image_principale  %}
+					<a href="{{ url('entity.node.canonical', {'node': row.node.node_id}) }}">
+						<div class="txt">
+							<div class="inner">
+							<div class="intitule_real"> {{ row.node.intitule_real}} </div>
+							<div class="espace_maison">  {{row.node.espace_maison}} </div>
+							</div> 
+						</div>
+						<img src="{{ row.node.image_principale }}" />
+					</a> 
+				{% else %} 	<img src="{{ base_path ~ directory }}/images/univers/img-sol.jpg" />
+				{% endif %}
+			</div> 
+		{% endif %}
+{% endfor %}

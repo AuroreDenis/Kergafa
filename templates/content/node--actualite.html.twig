@@ -1,0 +1,99 @@
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+	'actu-details'
+  ]
+%}
+<div class='all-pages-contenu'>
+	{{ attach_library('classy/node') }}
+	
+	<article {{ attributes.addClass(classes) }}>
+	
+	
+		<div {{ content_attributes.addClass('node__content') }}> 
+		{{ breadcrumbs }}
+			{% if image_url %}
+				<div class="image">
+					<img src="{{ image_url }}" alt="">
+				</div>
+			{% endif %}
+	
+			{% if date %}
+				<div class="flex-center">
+					<div class="date">
+						{{ date|date('d/m/Y') }}
+					</div>
+				</div>
+			{% endif %}
+			
+			<h1>{{ titre }}</h1>
+	
+			
+			
+					<div class="tous-themes">
+				{% if plomberie %}
+					<div class="themes plomberie">
+						Plomberie
+					</div>
+				{% endif %}
+						
+				{% if carrelage %}
+					<div class="themes carrelage">
+						Carrelage
+					</div>
+				{% endif %}
+						
+				{% if kg %}
+					<div class="themes kg">
+						Ker GAFA
+					</div>
+				{% endif %}
+						
+				{% if recrutement %}
+					<div class="themes recrutement">
+						Recrutement
+					</div>
+				{% endif %}
+						</div>
+			{% if texte %}
+				<div class="texte">
+					{{ texte }}
+				</div>
+			{% endif %}
+			
+			{% if image_details %}
+				<div class="img-details-flex">
+					{% for img in image_details %}
+							{%if image_details|length == 3 and loop.index == 1 %}
+								<div class="img-left">
+									<img src="{{img['path']}}" alt="{{img['legende']}}">
+									<div class="legende">{{img['legende']}}</div>
+								</div> 
+							{% elseif image_details|length == 3 and loop.index == 3%}
+								<div class="img-right">
+									<img src="{{img['path']}}" alt="{{img['legende']}}">
+									<div class="legende">{{img['legende']}}</div>
+								</div> 
+							{%else%}
+								<div class="image-legende">
+									<img src="{{img['path']}}" alt="{{img['legende']}}">
+									<div class="legende">{{img['legende']}}</div>
+								</div> 
+							{% endif%}
+					{% endfor %}
+				</div>
+			{% endif %}
+	
+			<div class="btn">
+				<a href="{{ url('entity.node.canonical', {'node': 34}) }}" class="default-btn secondary-color">{{ "Retour aux actualités"|t }}</a>
+			</div>
+	
+		</div>
+	
+	</article>
+</div>

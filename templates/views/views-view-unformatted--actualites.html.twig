@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+{% if title %}
+    <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+    {%
+    set row_classes = [
+    default_row_class ? 'views-row',
+    ]
+    %}
+
+    <a href="{{ url('entity.node.canonical', {'node': row.node.node_id}) }}" {{ row.attributes.addClass(row_classes) }}>
+        <div class="image" {% if row.node.image_url %}style="background: url('{{ row.node.image_url }}') no-repeat center; background-size: cover;"{% else %}style="background: #f2f2f2;"{% endif %}></div>
+        <div class="contenu">
+            <div class="titre">{{ row.node.titre }}</div>
+            {% if row.node.date %}
+                <div class="date">{{ row.node.date|date('d/m/Y') }}</div>
+            {% endif %}
+            {% if row.node.texte %}
+                <div class="resume">{{ row.node.texte }}</div>
+            {% endif %}
+            <div class="lire-la-suite">{{ "Lire la suite"|t }}</div>
+        </div>
+    </a>
+
+{% endfor %}
+

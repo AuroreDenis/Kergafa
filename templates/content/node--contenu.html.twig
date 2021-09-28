@@ -1,0 +1,156 @@
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+{{ attach_library('classy/node') }}
+<article {{ attributes.addClass(classes) }}>
+
+    <div {{ content_attributes.addClass('node__content') }}>
+
+        
+
+        <div class="paragraphes">
+            {% for para in paragraphes %}
+
+                {# PARAGRAPHE #}
+                {% if para.type == 'paragraphe' %}
+                    <div id="para-{{ para.title|clean_id }}" class="para-item clearfix para-item-{{ para.type|clean_class }} pos-photo-{{ para.pos_photos }} nb-photos-{{ para.nb_photos }}">
+                        {% if para.pos_photos == 1 %}
+                            <div class="para-desc">
+                                {% if para.title_display %}
+                                    <h2 class="para-title">{{ para.title }} </h2>
+                                {% endif %}
+                                {{ para.body }}
+                            </div>
+                        {% endif %}
+
+                        {% if para.photos %}
+                            <div class="para-photos clearfix">
+                                {% for photo in para.photos %}
+                                    <div class="para-photo">
+                                        <div class="para-photo-img"><a href="{{ photo.path }}" data-fancybox="group-{{ para.id }}" data-caption="{{ photo.legende }}"><img src="{{ photo.path }}" /></a></div>
+                                        <div class="para-photo-legende">{{ photo.legende }}</div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        {% if para.pos_photos != 1 %}
+                            <div class="para-desc">
+                                {% if para.title_display %}
+                                    <h2 class="para-title">{{ para.title }} </h2>
+                                {% endif %}
+                                {{ para.body }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                {% elseif para.type == 'documents' %}
+                    <div id="para-{{ para.title|clean_id }}" class="para-item clearfix para-item-{{ para.type|clean_class }} pos-photo-{{ para.pos_photos }} nb-photos-{{ para.nb_photos }}">
+                        {% if para.title_display %}
+                            <h2 class="para-title">{{ para.title }} </h2>
+                        {% endif %}
+
+                        {% if para.documents %}
+                            <div class="documents">
+                                {% for document in para.documents %}
+                                    <a href="{{ document.url_fichier }}" download class="doc type-{{ document.type }}">{% if document.titre %}{{ document.titre }}{% else %}{{ document.nom_fichier }}{% endif %}</a>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                    {# ACCORDEON #}     
+                {% elseif para.type == 'accordeon' %}
+                    <div id="para-{{ para.title|clean_id }}" class="para-item clearfix para-item-{{ para.type|clean_class }} pos-photo-{{ para.pos_photos }} nb-photos-{{ para.nb_photos }}">
+                        {% if para.title_display %}
+                            <h2 class="para-title">{{ para.title }} </h2>
+                        {% endif %}
+
+                        <div class="para-desc elements">
+                            {% for element in para.elements %}
+                                <div class="elem-acc-{{ loop.index }}">
+                                    <div class="titre-elem">
+                                        {{ element.titre }}
+                                    </div>
+                                    <div class="texte-elem">
+                                        {{ element.texte }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
+                    {# BLOC DE CONTENU #}
+                {% elseif para.type == 'bloc_contenu' %}
+                    <div id="para-{{ para.title|clean_id }}" class="para-item clearfix para-item-{{ para.type|clean_class }}">
+                        {% if para.title_display %}
+                            <h2 class="para-title">{{ para.title }} </h2>
+                        {% endif %}
+
+                        {{ para.bloc }}
+
+                    </div>
+
+                    {# GALERIE PHOTOS #}
+                {% elseif para.type == 'photo_contenu' %}
+                    <div id="para-{{ para.title|clean_id }}" class="para-item clearfix para-item-{{ para.type|clean_class }} pos-photo-1 nb-photos-{{ para.nb_photos }}">
+                        {% if para.title_display %}
+                            <h2 class="para-title">{{ para.title }} </h2>
+                        {% endif %}
+
+                        {% if para.photos %}
+                            <div class="para-photos clearfix">
+                                {% for photo in para.photos %}
+                                    <div class="para-photo">
+                                        <div class="para-photo-img"><a href="{{ photo.path }}" data-fancybox="group-{{ para.id }}" data-caption="{{ photo.legende }}"><img src="{{ photo.path }}" /></a></div>
+                                        <div class="para-photo-legende">{{ photo.legende }}</div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                    {# GRAPHIQUE #}
+                {% elseif para.type == 'graphique' %}
+                    <div id="para-{{ para.title|clean_id }}" class="para-item clearfix para-item-{{ para.type|clean_class }}">
+                        {% if para.title_display %}
+                            <h2 class="para-title">{{ para.title }} </h2>
+                        {% endif %}
+
+                        {% set graph_id = 'para-chart-' ~ para.id|clean_id %}
+                        <div id="{{ graph_id }}" class="para-graph"></div>
+
+                    </div>
+
+                    {# VIDEO #}
+                {% elseif para.type == 'video_contenu' %}
+                    <div id="para-{{ para.title|clean_id }}" class="para-item clearfix para-item-{{ para.type|clean_class }}">
+                        {% if para.title_display %}
+                            <h2 class="para-title">{{ para.title }} </h2>
+                        {% endif %}
+
+                        {% if para.video %}
+                            <div class="para-video clearfix">
+                                {{ para.video }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+
+</article>

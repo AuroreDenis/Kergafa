@@ -1,0 +1,21 @@
+name: Thème Kergafa
+type: theme
+description: 'Thème du site : Kergafa'
+core: 8.x
+base theme: site_base_theme
+
+libraries:
+  - kergafa_theme/global-styling
+  - kergafa_theme/fancybox
+  - kergafa_theme/aos
+  - site_base_theme/tarteaucitron
+  - site_base_theme/gl-supermenu
+  - site_base_theme/fontawesome
+  
+regions:
+  header: Header
+  slider: Slider
+  page_title: Titre de la page
+  content: Content  # required
+  map: Map OSM
+  footer: Footer

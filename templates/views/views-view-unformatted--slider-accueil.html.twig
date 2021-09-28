@@ -1,0 +1,62 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+{% if title %}
+    <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+    {%
+    set row_classes = [
+    default_row_class ? 'views-row',
+    'swiper-slide',
+    ]
+    %}
+
+    <div {{ row.attributes.addClass(row_classes) }}>
+        <div class="wrapper">
+            <div class="contenu">
+                <div class="titre">
+					<div class="rect-titre">
+   						<img src="{{ base_path ~ directory }}/images/svg/rect-titre.svg" />
+					</div>
+					{{ row.node.titre }}
+				</div>
+				
+				{% if row.node.sous_titre %}
+                    <div class="sous-titre">
+						<div class="rect-souligne">
+   							<img src="{{ base_path ~ directory }}/images/svg/rect-souligne.svg" />
+						</div>
+						{{ row.node.sous_titre }}
+					</div>
+                {% endif %}
+				
+                {% if row.node.texte %}
+                    <div class="texte">{{ row.node.texte }}</div>
+                {% endif %}
+                {% if row.node.url_btn %}
+                    <a href="{{ row.node.url_btn }}" class="default-btn primary-color">
+                        {% if row.node.texte_btn %}{{ row.node.texte_btn }}{% else %}{{ "En savoir plus"|t }}{% endif %}
+                    </a>
+                {% endif %}
+				
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+

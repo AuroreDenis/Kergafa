@@ -1,0 +1,21 @@
+
+	<div class="rejoindre-pages-flex">
+		<div class="rejoindre-left">
+			<div class="rejoindre-txt">
+				<img src="{{ base_path ~ directory }}/images/rect-contact.jpg" /> 
+				<p>Vous êtes à la recherche d'un artisan membre du réseau Ker Gafa ?</p>
+			</div>
+			<a href="/node/42" class="default-btn primary-color">
+				{% if row.node.texte_btn %}{{ row.node.texte_btn }}{% else %}{{ "Contactez-nous"|t }}{% endif %}
+			</a>
+		</div>
+		<div class="rejoindre-right">
+			<div class="rejoindre-txt">
+				<img src="{{ base_path ~ directory }}/images/rect-rej.jpg" /> 
+				<p> Vous êtes un professionnel du bâtiment et vous souhaitez rejoindre notre réseau ?</p>
+			</div>
+			<a href="/node/76" class="default-btn primary-color">
+				{% if row.node.texte_btn %}{{ row.node.texte_btn }}{% else %}{{ "Contactez-nous"|t }}{% endif %}
+			</a>
+		</div>
+</div>
